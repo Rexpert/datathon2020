@@ -14,7 +14,7 @@ ui <- dashboardPage(
       id = "tabs",
       menuItem("Product Category", tabName = "cat", icon = icon("gifts")),
       menuItem("Price Prediction", tabName = "price", icon = icon("dollar-sign")),
-      menuItem("Keywords in Title", tabName = "title", icon = icon("key"))
+      menuItem("Keywords Analysis", tabName = "title", icon = icon("key"))
     )
   ),
   body=dashboardBody(
@@ -39,15 +39,9 @@ ui <- dashboardPage(
         sidebarLayout(
           sidebarPanel(
             width = 3,
-            p("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue arcu, dapibus sit amet dapibus sit amet, mattis vitae urna. Sed ac turpis."),
-            p("Quisque consequat ligula turpis, ac posuere ligula mattis eu. Etiam neque elit, sagittis at quam sed, sagittis sollicitudin velit. Vestibulum moles."),
-            tags$ul(
-              tags$li(tags$span("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")),
-              tags$li(tags$span("Donec congue libero sed facilisis laoreet.")),
-              tags$li(tags$span("In vestibulum neque dignissim, suscipit dolor in, rutrum purus.")),
-              tags$li(tags$span("Ut quis arcu iaculis, fermentum lacus quis, sodales leo.")),
-              tags$li(tags$span("Nunc quis sapien molestie orci efficitur interdum ut mattis magna."))
-            )
+            p(style="text-align:justify", "From the Sunburst chart, we have the top 5 hottest selling products in the 2nd half of 2019: Men Shoes, Motor, Women's Shoes and Clothing, Sport and Outdoor & Mother and Baby. These 5 product categories make up to ", strong("40% of the total sales quantity.")),
+            p(style="text-align:justify", 'These figures reflect a general trend of top-selling items in online shopping. Hence, if someone wants to become the highest "niubility" online seller on the platform, ', strong("they should focus on the Mother & Baby products,"), "which is the top sales product overall (~10% of total sales quantity). In the next analysis, our team presumed the online seller has decided to sell Mother & Baby products."),
+            p(style="text-align:justify", "You can click into the sunburst chart to see more information!")
           ),
           mainPanel(
             width = 9,
@@ -73,8 +67,9 @@ ui <- dashboardPage(
         sidebarLayout(
           sidebarPanel(
             width = 3,
-            p("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue arcu, dapibus sit amet dapibus sit amet, mattis vitae urna. Sed ac turpis."),
-            p("Quisque consequat ligula turpis, ac posuere ligula mattis eu. Etiam neque elit, sagittis at quam sed, sagittis sollicitudin velit. Vestibulum moles."),
+            p(style="text-align:justify", "Pricing is crucial in online selling, lower prices might attract customers, but may cause a backfire on profit. To find the optimum discount rate, a regression model was used to predict the actual price (less discount) from original price of Mother & Baby products."),
+            p(style="text-align:justify", "The optimum discount rate is 47.67% and the actual price is predicted by the regression formula:"),
+            p(style="font-style:italic", HTML("Predicted Actual Price <br>= 0.52 Original Price + 0.86")),
             inputPanel(
               textInput(
                 inputId = "price_ori",
@@ -109,7 +104,7 @@ ui <- dashboardPage(
             tagList(
               tags$h3(
                 style = "font-style: italic;font-size: 50px;text-align: center;font-family: \"Computer Modern\"",
-                HTML("Which Keywords should I put in the Title?")
+                HTML("Which Keywords are Important?")
               )
             ),
             "", width = 12, color = "blue"
@@ -118,15 +113,11 @@ ui <- dashboardPage(
         sidebarLayout(
           sidebarPanel(
             width = 3,
-            p("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue arcu, dapibus sit amet dapibus sit amet, mattis vitae urna. Sed ac turpis."),
-            p("Quisque consequat ligula turpis, ac posuere ligula mattis eu. Etiam neque elit, sagittis at quam sed, sagittis sollicitudin velit. Vestibulum moles."),
-            tags$ul(
-              tags$li(tags$span("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")),
-              tags$li(tags$span("Donec congue libero sed facilisis laoreet.")),
-              tags$li(tags$span("In vestibulum neque dignissim, suscipit dolor in, rutrum purus.")),
-              tags$li(tags$span("Ut quis arcu iaculis, fermentum lacus quis, sodales leo.")),
-              tags$li(tags$span("Nunc quis sapien molestie orci efficitur interdum ut mattis magna."))
-            )
+            p(style="text-align:justify", "With the help of Natural Language Processing (NLP) in analyzing the product title, the output was presented in Word Cloud. The bigger the word showed, the more important the keyword is."),
+            p(style="text-align:justify", "By using the TF-IDF model, we found out the following words are fairly important in the product title:", strong("Animal, Freezer, Home, Prado & Picnic."), "It is recommended to include these words in the product title, to catch customers' eyeballs."),
+            p(style="text-align:justify", "We also observed that the appearance of proper nouns in the bags of keywords: Prado, XJING, Aldo, Prefeclan, Groboc, etc. Hence, it is also recommended to ", strong("have a specific brand name in the product title.")),
+            p("Thanks for Watching!"),
+            a(href="https://github.com/Rexpert/datathon2020", target="_blank", "Bring me to Source Code!")
           ),
           mainPanel(
             width = 9,
@@ -144,7 +135,7 @@ server <- function(input, output, session) {
       input$tabs,
       "cat" = "Product Category",
       "price" = "Price Prediction",
-      "title" = "Keywords in Title")
+      "title" = "Keywords Analysis")
   })
   val <- reactiveValues(
     predict = "RM 0.00"

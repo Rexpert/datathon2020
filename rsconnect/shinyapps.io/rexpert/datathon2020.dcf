@@ -1,0 +1,13 @@
+name: datathon2020
+title: datathon2020
+username:
+account: rexpert
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3316539
+bundleId: 3916859
+url: https://rexpert.shinyapps.io/datathon2020/
+when: 1606593934.54518
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: nlp.py|regression.py|share.py|sunbrust.py|.vscode/settings.json|archive|data

@@ -1,12 +1,9 @@
-
 # Created by https://www.toptal.com/developers/gitignore/api/vscode,python,r
 # Edit at https://www.toptal.com/developers/gitignore?templates=vscode,python,r
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
-*$py.class
 
 # C extensions
 *.so

@@ -19,7 +19,10 @@ ui <- dashboardPage(
   ),
   body=dashboardBody(
     shinyDashboardThemes("grey_light"),
-    tags$head(includeScript("js/press_enter.js")),
+    tags$head(
+      includeScript("js/press_enter.js"),
+      tags$style(".content-wrapper {min-height: 100rem !important;}")
+    ),
     tabItems(
       tabItem(
         "cat",
@@ -38,6 +41,7 @@ ui <- dashboardPage(
         ),
         sidebarLayout(
           sidebarPanel(
+            style="height:auto",
             width = 3,
             p(style="text-align:justify", "From the Sunburst chart, we have the top 5 hottest selling products in the 2nd half of 2019: Men Shoes, Motor, Women's Shoes and Clothing, Sport and Outdoor & Mother and Baby. These 5 product categories make up to ", strong("40% of the total sales quantity.")),
             p(style="text-align:justify", 'These figures reflect a general trend of top-selling items in online shopping. Hence, if someone wants to become the highest "niubility" online seller on the platform, ', strong("they should focus on the Mother & Baby products,"), "which is the top sales product overall (~10% of total sales quantity). In the next analysis, our team presumed the online seller has decided to sell Mother & Baby products."),
@@ -66,20 +70,27 @@ ui <- dashboardPage(
         ),
         sidebarLayout(
           sidebarPanel(
+            style="height:auto",
             width = 3,
             div(
               p(style="text-align:justify", "Pricing is crucial in online selling, lower prices might attract customers, but may cause a backfire on profit. To find the optimum discount rate, a regression model was used to predict the actual price (less discount) from original price of Mother & Baby products."),
               p(style="text-align:justify", "The optimum discount rate is 47.67% and the actual price is predicted by the regression formula:"),
               p(style="font-style:italic", HTML("Predicted Actual Price <br>= 0.52 Original Price + 0.86")),
               inputPanel(
-                textInput(
-                  inputId = "price_ori",
-                  label = "Original Price: ",
-                  placeholder = "RM 0.00"
-                ),
-                span(
-                  actionButton('submit', 'GO!', width="100%"),
-                  style = "float:right"
+                fluidRow(
+                  column(
+                    width = 8,
+                    textInput(
+                      inputId = "price_ori",
+                      label = "Original Price: ",
+                      placeholder = "RM 0.00"
+                    )
+                  ),
+                  column(
+                    width = 4,
+                    actionButton('submit', 'GO!', width="100%"),
+                    style = "margin-top: 25px;"
+                  )
                 )
               ),
               inputPanel(
@@ -111,6 +122,7 @@ ui <- dashboardPage(
         ),
         sidebarLayout(
           sidebarPanel(
+            style="height:auto",
             width = 3,
             p(style="text-align:justify", "With the help of Natural Language Processing (NLP) in analyzing the product title, the output was presented in Word Cloud. The bigger the word showed, the more important the keyword is."),
             p(style="text-align:justify", "By using the TF-IDF model, we found out the following words are fairly important in the product title:", strong("Animal, Freezer, Home, Prado & Picnic."), "It is recommended to include these words in the product title, to catch customers' eyeballs."),

@@ -18,7 +18,7 @@ en = []
 other = []
 os.chdir(wd)
 
-# ---------------------------------------------
+# Skip to read keywords.csv ---------------------------------------------
 
 rx_csv = re.compile(r'.*\.csv$')
 
@@ -49,7 +49,7 @@ titles = pi_all.loc[pi_all.item_category_detail.str.contains(rx_cat), 'title']
 #     for i in range(0, len(lst), n):
 #         yield lst[i:i + n]
 
-
+# # Devide into 10 Tasks
 # lst = list(chunks(titles.to_list(), 20800))
 
 # SAVE = True
@@ -60,6 +60,7 @@ titles = pi_all.loc[pi_all.item_category_detail.str.contains(rx_cat), 'title']
 #                 f.write(s + '\n')
 # print('done')
 
+# Outsourced to Different PC
 limit = len(titles) / 2
 counter = 0
 translator = Translator()
@@ -80,7 +81,7 @@ for i, title in enumerate(titles):
     else:
         other.append(title)
 
-
+TEST = False
 if TEST:
     with open(os.path.join(output_path, 'nlp_en_list.txt'), 'w+', encoding='utf-8') as f:
         for s in en:
@@ -96,6 +97,12 @@ else:
             en.extend([line.rstrip('\n') for line in f])
         with open(os.path.join(output_path, 'wip_output', 'other_{}.txt'.format(i)), 'r+', encoding='utf-8') as f:
             other.extend([line.rstrip('\n') for line in f])
+
+
+# Outsource to Google Colab:
+# https://colab.research.google.com/drive/1e8F8YUH3f4-7rpJ8Xk__cUIjXfpJH1yD?usp=sharing
+# with open(os.path.join(output_path, 'colab', 'token_list.pkl'), 'wb+') as output:
+#     pickle.dump(token_list, output, pickle.HIGHEST_PROTOCOL)
 
 nlp = spacy.load('en_core_web_sm')
 
@@ -126,15 +133,12 @@ token_list = [get_token_list(title, i) for i, title in enumerate(en)]
 # tfidf_vectors = tfidf.fit_transform(token_list)
 # pd.DataFrame(tfidf_vectors.todense(), columns=tfidf.vocabulary_).sum(axis=0)
 
-# https://colab.research.google.com/drive/1e8F8YUH3f4-7rpJ8Xk__cUIjXfpJH1yD?usp=sharing
-with open(os.path.join(output_path, 'colab', 'token_list.pkl'), 'wb+') as output:
-    pickle.dump(token_list, output, pickle.HIGHEST_PROTOCOL)
-
-# ---------------------------------------------------------------------
-
+# Start From HERE after loading packages --------------------------------------
+# Read output from Google Colab
 keywords = pd.read_csv(os.path.join(output_path, 'colab', 'keywords.csv'))
-keywords.columns = ['keyword', 'sum_tfidf']
 
+# Cleaning Data Frame
+keywords.columns = ['keyword', 'sum_tfidf']
 keywords_list = keywords.apply(lambda r: (
     r.keyword, round(r.sum_tfidf, 2)), axis=1).to_list()
 

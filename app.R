@@ -67,25 +67,24 @@ ui <- dashboardPage(
         sidebarLayout(
           sidebarPanel(
             width = 3,
-            p(style="text-align:justify", "Pricing is crucial in online selling, lower prices might attract customers, but may cause a backfire on profit. To find the optimum discount rate, a regression model was used to predict the actual price (less discount) from original price of Mother & Baby products."),
-            p(style="text-align:justify", "The optimum discount rate is 47.67% and the actual price is predicted by the regression formula:"),
-            p(style="font-style:italic", HTML("Predicted Actual Price <br>= 0.52 Original Price + 0.86")),
-            inputPanel(
-              textInput(
-                inputId = "price_ori",
-                label = "Original Price: ",
-                placeholder = "RM 0.00"
+            div(
+              p(style="text-align:justify", "Pricing is crucial in online selling, lower prices might attract customers, but may cause a backfire on profit. To find the optimum discount rate, a regression model was used to predict the actual price (less discount) from original price of Mother & Baby products."),
+              p(style="text-align:justify", "The optimum discount rate is 47.67% and the actual price is predicted by the regression formula:"),
+              p(style="font-style:italic", HTML("Predicted Actual Price <br>= 0.52 Original Price + 0.86")),
+              inputPanel(
+                textInput(
+                  inputId = "price_ori",
+                  label = "Original Price: ",
+                  placeholder = "RM 0.00"
+                ),
+                span(
+                  actionButton('submit', 'GO!', width="100%"),
+                  style = "float:right"
+                )
               ),
-              splitLayout(
-                cellWidths = c("65%", "35%"),"",
-                actionButton("submit", "GO!", width = "100%")
-              )
-            ),
-            inputPanel(
-              p(strong("Actual Price: ")),
-              fluidRow(
-                style = "height: 10vh;",
-                column(9, textOutput("predict"))
+              inputPanel(
+                p(strong("Actual Price: ")),
+                textOutput("predict")
               )
             )
           ),
@@ -115,7 +114,7 @@ ui <- dashboardPage(
             width = 3,
             p(style="text-align:justify", "With the help of Natural Language Processing (NLP) in analyzing the product title, the output was presented in Word Cloud. The bigger the word showed, the more important the keyword is."),
             p(style="text-align:justify", "By using the TF-IDF model, we found out the following words are fairly important in the product title:", strong("Animal, Freezer, Home, Prado & Picnic."), "It is recommended to include these words in the product title, to catch customers' eyeballs."),
-            p(style="text-align:justify", "We also observed that the appearance of proper nouns in the bags of keywords: Prado, XJING, Aldo, Prefeclan, Groboc, etc. Hence, it is also recommended to ", strong("have a specific brand name in the product title.")),
+            p(style="text-align:justify", "We also observed that the appearance of proper nouns in the bags of keywords: Prado, XJING, Aldo, Prefeclan, Groboc, etc. Hence, it is also advised to ", strong("have a specific brand name in the product title.")),
             p("Thanks for Watching!"),
             a(href="https://github.com/Rexpert/datathon2020", target="_blank", "Bring me to Source Code!")
           ),

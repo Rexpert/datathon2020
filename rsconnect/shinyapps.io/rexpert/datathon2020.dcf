@@ -5,9 +5,9 @@ account: rexpert
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3316539
-bundleId: 3921518
+bundleId: 3921822
 url: https://rexpert.shinyapps.io/datathon2020/
-when: 1606715409.25014
+when: 1606723146.00918
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: environment.yml|nlp.py|README.md|regression.py|share.py|sunbrust.py|.vscode/settings.json|archive|data

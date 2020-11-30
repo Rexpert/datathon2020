@@ -16,6 +16,7 @@ os.chdir(wd)
 
 rx_csv = re.compile(r'.*\.csv$')
 
+# Read Data
 filenames = os.listdir(data_path)
 filenames = [os.path.join(wd, data_path, name)
              for name in filenames if rx_csv.match(name)]
@@ -31,6 +32,7 @@ for file in filenames:
         # Concatenate all files HERE
         pi_all = pi_all.append(pi.iloc[:, [2, 6, 7]])
 
+# Filter out only for "Mother & Baby Products"
 rx_cat = re.compile(r'.*/{}/.*'.format(r'mother & baby'))
 prices = pi_all.loc[pi_all.item_category_detail.str.contains(
     rx_cat), ['price_ori', 'price_actual']]
@@ -91,8 +93,9 @@ scatter = (
         ),
         tooltip_opts=opts.TooltipOpts(is_show=False),
         legend_opts=opts.LegendOpts(pos_top="bottom"),
-        title_opts=opts.TitleOpts("Prediction on Actual Price with Original Price on Mother & Baby category \nusing Weighted Least Squares Regression",
-                                  subtitle="1", item_gap=100, title_textstyle_opts=opts.TextStyleOpts(align='middle'))
+        title_opts=opts.TitleOpts(
+            "Prediction on Actual Price with Original Price on Mother & Baby category \nusing Weighted Least Squares Regression"
+        )
     )
 )
 
@@ -103,7 +106,6 @@ line = (
     .add_yaxis(
         series_name="WLS prediction",
         y_axis=prices.price_actual_wls.to_list(),
-        # symbol="emptyCircle",
         is_symbol_show=True,
         label_opts=opts.LabelOpts(is_show=False),
     )

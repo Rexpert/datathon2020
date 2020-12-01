@@ -16,6 +16,7 @@ No.   | Variable name         | Description
 8     | price_actual          | Refer to the actual price to be paid (include discounted price) for the product as per date crawled
 9     | sellerID              | Refer to the seller name/company
 10    | seller_rating         | Refer to the rating of the seller  
+
 The usage of this dataset is specifically for Datathon only. As we agreed in the term and conditions, this dataset will not be shared in any form (including the GitHub Repository) and will be removed in the local at the end of this Datathon.
 
 ## Objective & Result

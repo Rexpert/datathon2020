@@ -31,6 +31,9 @@ Please install the required packages via `conda` accordingly:
 ```
 cd datathon2020
 conda env create --file environment.yml
+conda activate datathon
+python
+> # run python chunk script here
 ```
 
 ## Outsourcing

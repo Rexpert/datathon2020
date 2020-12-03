@@ -55,7 +55,7 @@ titles = pi_all.loc[pi_all.item_category_detail.str.contains(rx_cat), 'title']
 # SAVE = True
 # for i, l in enumerate(lst):
 #     if SAVE:
-#         with open(os.path.join(output_path, wip_output, '{}.txt'.format(i)), 'w+', encoding='utf-8') as f:
+#         with open(os.path.join(output_path, 'wip', '{}.txt'.format(i)), 'w+', encoding='utf-8') as f:
 #             for s in l:
 #                 f.write(s + '\n')
 # print('done')

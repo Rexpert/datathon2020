@@ -198,5 +198,7 @@ debug.log
 ### User-defined ###
 /data/
 /archive/
+/output/wip/
+/output/wip_output/
 
 # End of https://www.toptal.com/developers/gitignore/api/vscode,python,r

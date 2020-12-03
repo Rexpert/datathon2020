@@ -126,7 +126,7 @@ ui <- dashboardPage(
             width = 3,
             p(style="text-align:justify", "With the help of Natural Language Processing (NLP) in analyzing the product title, the output was presented in Word Cloud. The bigger the word showed, the more important the keyword is."),
             p(style="text-align:justify", "By using the TF-IDF model, we found out the following words are fairly important in the product title:", strong("Animal, Freezer, Home, Prado & Picnic."), "It is recommended to include these words in the product title, to catch customers' eyeballs."),
-            p(style="text-align:justify", "We also observed that the appearance of proper nouns in the bags of keywords: Prado, XJING, Aldo, Prefeclan, Groboc, etc. Hence, it is also advised to ", strong("have a specific brand name in the product title.")),
+            p(style="text-align:justify", "We also observed that the appearance of proper nouns in the bags of keywords: Prado, XJING, Aldo, Perfeclan, Groboc, etc. Hence, it is also advised to ", strong("have a specific brand name in the product title.")),
             p("Thanks for Watching!"),
             a(href="https://github.com/Rexpert/datathon2020", target="_blank", "Bring me to Source Code!")
           ),

@@ -49,11 +49,12 @@ if not os.path.exists(keyword_path):
             with open(os.path.join(output_path, 'wip', '{}.txt'.format(i)), 'w+', encoding='utf-8') as f:
                 for s in l:
                     f.write(s + '\n')
-        print('Run share.py x10 times with different filename')
+        # Run share.py
+        os.system('python share.py')
     else:
         # # -----------------------------------------------
         # # Copy the en_0.txt - en_9.txt to gdrive
-        # # Run this in Google Colab
+        # # Run these commented codes in Google Colab
         # # https://colab.research.google.com/drive/1e8F8YUH3f4-7rpJ8Xk__cUIjXfpJH1yD?usp=sharing
         # # -----------------------------------------------
         # import re

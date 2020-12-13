@@ -49,7 +49,7 @@ def sub_task(n):
     start = time.time()
     core(n)
     end = time.time()
-    print('Task {} runs {.2f} seconds.'.format(n, (end - start)))
+    print('Task {} runs {0.2f} seconds.'.format(n, (end - start)))
 
 
 if __name__ == '__main__':
